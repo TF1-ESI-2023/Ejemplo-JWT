@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+  api:
     image: ggmartinez/laravel:9-php7-Xdebug
     restart: unless-stopped
     tty: true
