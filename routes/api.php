@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\BebidaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +25,13 @@ Route::group([
     Route::post('refresh',[AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
 });
+
+Route::prefix('v1')->group(function(){
+    Route::get('bebida',[BebidaController::class, 'Listar']);
+    Route::get('bebida/{d}',[BebidaController::class, 'Obtener']);
+    Route::post('bebida',[BebidaController::class, 'Crear']) -> middleware(api::class);
+    Route::put('bebida/{d}',[BebidaController::class, 'Actualizar']) -> middleware(api::class); 
+    Route::delete('bebida/{d}',[BebidaController::class, 'Borrar']) -> middleware(api::class);
+});
+
+
